@@ -1,0 +1,9 @@
+The Query below is what I used in Grafana to pull the data from Log Analytics and build the gauge to display spend data. 
+
+CiraltosSpend_CL |
+where TimeGenerated >= ago(24h) |
+top 1 by TimeGenerated desc |
+project Period = Period_s
+                  , Day = Day_s
+                  , Budget = Budget_d
+                  , PeriodSpend = Spend_d
